@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Logo from '../../olx-logo.png';
 import './Signup.css';
+import { FirebaseContext } from '../../Store/FirebaseContext';
 
 export default function Signup() {
 
@@ -11,11 +12,15 @@ export default function Signup() {
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
 
+// <------- Firebase ------->
+  const {Firebase} = useContext(FirebaseContext)
+
   // <------- Functions ------->
   const handleSubmit =(e)=>{
     // To avoid default reloading
     e.preventDefault()
     console.log(username);
+    console.log(Firebase);
   }
 
 
@@ -31,7 +36,6 @@ export default function Signup() {
             type="text"
             id="fname"
             name="name"
-            defaultValue="John"
             // Storing value into state variable
             value={username}
             onChange={(e)=> setUsername(e.target.value)}
@@ -44,7 +48,6 @@ export default function Signup() {
             type="email"
             id="fname"
             name="email"
-            defaultValue="John"
 
             value={email}
             onChange={(e)=> setEmail(e.target.value)}
@@ -57,7 +60,6 @@ export default function Signup() {
             type="number"
             id="lname"
             name="phone"
-            defaultValue="1234567890"
 
             value={phone}
             onChange={(e)=> setPhone(e.target.value)}
@@ -70,7 +72,6 @@ export default function Signup() {
             type="password"
             id="lname"
             name="password"
-            defaultValue="********"
 
             value={password}
             onChange={(e)=> setPassword(e.target.value)}
