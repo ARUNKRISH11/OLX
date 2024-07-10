@@ -94,9 +94,6 @@
   margin-right: 5px;
 }
 
-.language svg {
-}
-
 .span {
   text-decoration: none;
   font-size: 16px;
@@ -164,4 +161,18 @@
   .sellMenu {
     display: none;
   }
+}
+
+.logoutPage{
+  cursor: pointer;
+}
+
+.logoutPage hr {
+  margin: 0;
+  background-color: black;
+  height: 2px;
+}
+
+.logoutPage a{
+  text-decoration: none;
 }

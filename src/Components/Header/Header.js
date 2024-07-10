@@ -8,11 +8,18 @@ import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Store/Context';
+import { auth } from '../../Firebase/config';
 function Header() {
 
 // <------- Hooks and Variables ------->
   const navigate = useNavigate();
   const {user} = useContext(AuthContext)
+
+  const handleLogout=()=>{
+    auth.signOut()
+    alert('Logout Successful')
+    navigate('/login')
+  }
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -40,7 +47,11 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div onClick={()=> navigate('/login')} className="loginPage">
-          <span>{user ? user.displayName : 'Login'}</span>
+          <span>{user ? `Welcome ${user.displayName}` : 'Login'}</span>
+          <hr />
+        </div>
+        <div onClick={handleLogout} className="logoutPage">
+          <span>{ user && 'Logout'} </span>
           <hr />
         </div>
 

@@ -24,6 +24,7 @@ function Login() {
     // Should check authentication ON in firebase site
     auth.signInWithEmailAndPassword(email, password).then((result)=>{
       alert('Login Successful')
+      navigate('/')
       console.log(result);
     }).catch((error)=>{
       alert('Check Email and Password')
@@ -59,7 +60,7 @@ function Login() {
           />
           <br />
           <br />
-          <button onClick={() => navigate('/')}>Login</button>
+          <button >Login</button>
         </form>
         <a onClick={() => navigate('/signup')} >Signup</a>
       </div>
