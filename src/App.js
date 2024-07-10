@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {BrowserRouter as Router,Routes, Route, Link} from "react-router-dom";
 
 import './App.css';
 
 
-// =====Import Components=====
- 
+// <------- Components -------> 
 import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import { AuthContext, FirebaseContext } from './Store/Context';
+import { auth } from './Firebase/config';
 
 function App() {
+
+// <------- User Authentication ------->
+  const {setUser} = useContext(AuthContext)
+  useEffect(() => {
+    // Execution while mount (loading)
+    auth.onAuthStateChanged((user)=>{
+      setUser(user)
+    })
+  })
+  
   return (
     <div>
       <Router>

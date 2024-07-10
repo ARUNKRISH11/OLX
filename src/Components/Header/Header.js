@@ -7,11 +7,12 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Store/Context';
 function Header() {
 
-  // <------- Hooks and Variables ------->
+// <------- Hooks and Variables ------->
   const navigate = useNavigate();
-
+  const {user} = useContext(AuthContext)
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -39,7 +40,7 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div onClick={()=> navigate('/login')} className="loginPage">
-          <span>Login</span>
+          <span>{user ? user.displayName : 'Login'}</span>
           <hr />
         </div>
 
