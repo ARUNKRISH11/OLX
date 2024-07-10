@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 
 import Logo from '../../olx-logo.png';
 import './Signup.css';
-import { FirebaseContext } from '../../Store/FirebaseContext';
+import { FirebaseContext } from '../../Store/Context';
 import { auth } from '../../Firebase/config';
 import { useNavigate } from 'react-router-dom';
 

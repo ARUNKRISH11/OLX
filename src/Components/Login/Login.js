@@ -4,7 +4,7 @@ import Logo from '../../olx-logo.png';
 import './Login.css';
 import { auth } from '../../Firebase/config';
 import { useNavigate } from 'react-router-dom';
-import { FirebaseContext } from '../../Store/FirebaseContext';
+import { FirebaseContext } from '../../Store/Context';
 
 function Login() {
   // <------- Hooks and Variables ------->
