@@ -8,6 +8,7 @@ import './App.css';
  
 import Home from './Pages/Home';
 import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
           <Route exact path="/" Component={Home}>
           </Route>
           <Route path="/signup" Component={Signup}>
+          </Route>
+          <Route path="/login" Component={Login}>
           </Route>
         </Routes>
       </Router>
