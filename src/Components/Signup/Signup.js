@@ -8,17 +8,17 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
   
-  // <------- UseState Variables ------->
+  // <------- Hooks and Variables ------->
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
   
   // <------- Firebase ------->
   // Firestore Database in native mode
   // Allow read and write option
   const {Firebase} = useContext(FirebaseContext)
-  const navigate = useNavigate();
 
   // <------- Functions ------->
   const handleSubmit =(e)=>{
@@ -35,9 +35,10 @@ export default function Signup() {
           alert('User Added')
           navigate('/login')
         })
-
       })
       console.log(result.user);
+    }).catch((error)=>{
+      alert('Password should be at least 6 characters')
     })
   }
 
@@ -98,7 +99,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-        <a>Login</a>
+        <a onClick={() => navigate('/login')}>Login</a>
       </div>
     </div>
   );
