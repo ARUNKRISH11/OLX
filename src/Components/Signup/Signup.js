@@ -32,7 +32,7 @@ export default function Signup() {
           username: username,
           phone: phone
         }).then(()=>{
-          alert('User Added')
+          alert('Signup Succcessful')
           navigate('/login')
         })
       })
