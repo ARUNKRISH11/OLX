@@ -57,7 +57,7 @@ const Create = () => {
           alt="Posts" 
           width="200px" 
           height="200px" 
-          src={image ? URL.createObjectURL(image) : ''} ></img>
+          src={image ? URL.createObjectURL(new Blob([image], {type:'jpg'})) : ''} ></img>
           <form>
             <br />
             <input 
