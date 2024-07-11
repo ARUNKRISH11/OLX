@@ -5,11 +5,12 @@ import './App.css';
 
 
 // <------- Components -------> 
-import Home from './Pages/Home';
-import Signup from './Pages/Signup';
-import Login from './Pages/Login';
 import { AuthContext, FirebaseContext } from './Store/Context';
 import { auth } from './Firebase/config';
+import Home from './Pages/Home';
+import CreatePage from './Pages/Create';
+import LoginPage from './Pages/Login';
+import SignupPage from './Pages/Signup';
 
 function App() {
 
@@ -26,12 +27,10 @@ function App() {
     <div>
       <Router>
         <Routes>
-          <Route exact path="/" Component={Home}>
-          </Route>
-          <Route path="/signup" Component={Signup}>
-          </Route>
-          <Route path="/login" Component={Login}>
-          </Route>
+          <Route exact path="/" Component={Home}/>
+          <Route path="/signup" Component={SignupPage}/>
+          <Route path="/login" Component={LoginPage}/>
+          <Route path="/sell" Component={CreatePage}/>
         </Routes>
       </Router>
     </div>
