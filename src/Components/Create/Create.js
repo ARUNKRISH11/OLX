@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import './Create.css';
 import Header from '../Header/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
 
@@ -8,6 +9,13 @@ const Create = () => {
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState('');
   const [image, setImage] = useState([]);
+  const navigate = useNavigate()
+
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    console.log({name, category, price, image});
+    navigate('/')
+  }
 
   return (
     <Fragment>
@@ -48,7 +56,7 @@ const Create = () => {
             name="Price" 
 
             value={price}
-            onChange={(e)=> setPrice(e.target.value)}
+            onChange={(e)=> setPrice(e.target.value)  }
             />
             <br />
           </form>
@@ -65,7 +73,7 @@ const Create = () => {
             onChange={(e)=> setImage(e.target.files[0])}
             />
             <br />
-            <button className="uploadBtn">upload and Submit</button>
+            <button onClick={handleSubmit} className="uploadBtn">upload and Submit</button>
           </form>
         </div>
       </card>
