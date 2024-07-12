@@ -176,3 +176,7 @@
 .logoutPage a{
   text-decoration: none;
 }
+
+.brandName{
+  cursor: pointer;
+}
