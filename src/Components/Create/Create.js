@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import './Create.css';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Store/Context';
+import { db, storage } from '../../Firebase/config';
 
 const Create = () => {
 
@@ -10,10 +12,27 @@ const Create = () => {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState([]);
   const navigate = useNavigate()
+  const date = new Date();
+
+  const {user} = useContext(AuthContext)
 
   const handleSubmit =(e)=>{
     e.preventDefault();
     console.log({name, category, price, image});
+
+    storage.ref(`/image/${image.name}`).put(image).then(({ref})=>{
+      ref.getDownloadURL().then((url)=>{
+        console.log(url);
+        db.collection('products').add({
+          name,
+          category,
+          price,
+          url,
+          userId: user.uid,
+          createdAt: date.toDateString()
+        })
+      })
+    })
     navigate('/')
   }
 
